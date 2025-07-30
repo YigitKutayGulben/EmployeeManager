@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 
+//Employee table component
 const Employee = () => {
   const [employees, setEmployees] = useState([
     {
@@ -45,9 +46,7 @@ const Employee = () => {
 
   const handleSave = () => {
     setEmployees((prev) =>
-      prev.map((emp) =>
-        emp.id === editingEmployee.id ? editingEmployee : emp
-      )
+      prev.map((emp) => (emp.id === editingEmployee.id ? editingEmployee : emp))
     );
     setModalOpen(false);
     setEditingEmployee(null);
@@ -60,7 +59,7 @@ const Employee = () => {
 
   return (
     <div>
-      <h1>Employee Manager</h1>
+      <h1 className="table-title">Employee Manager</h1>
       <table>
         <thead>
           <tr>
@@ -74,7 +73,7 @@ const Employee = () => {
         </thead>
         <tbody>
           {employees.map((employee) => (
-            <tr key={employee.id}>
+            <tr className="tabe-data" key={employee.id}>
               <td>{employee.id}</td>
               <td>{employee.name}</td>
               <td>{employee.email}</td>
@@ -84,9 +83,7 @@ const Employee = () => {
                 <button onClick={() => deleteEmployee(employee.id)}>
                   Delete
                 </button>
-                <button onClick={() => handleEditClick(employee)}>
-                  Edit
-                </button>
+                <button onClick={() => handleEditClick(employee)}>Edit</button>
               </td>
             </tr>
           ))}
@@ -100,19 +97,35 @@ const Employee = () => {
             <div className="modal-form">
               <div>
                 <label>Name: </label>
-                <input name="name" value={editingEmployee.name} onChange={handleInputChange} />
+                <input
+                  name="name"
+                  value={editingEmployee.name}
+                  onChange={handleInputChange}
+                />
               </div>
               <div>
                 <label>Email: </label>
-                <input name="email" value={editingEmployee.email} onChange={handleInputChange} />
+                <input
+                  name="email"
+                  value={editingEmployee.email}
+                  onChange={handleInputChange}
+                />
               </div>
               <div>
                 <label>Phone: </label>
-                <input name="phone" value={editingEmployee.phone} onChange={handleInputChange} />
+                <input
+                  name="phone"
+                  value={editingEmployee.phone}
+                  onChange={handleInputChange}
+                />
               </div>
               <div>
                 <label>Department: </label>
-                <input name="depertment" value={editingEmployee.depertment} onChange={handleInputChange} />
+                <input
+                  name="depertment"
+                  value={editingEmployee.depertment}
+                  onChange={handleInputChange}
+                />
               </div>
               <div className="modal-buttons">
                 <button onClick={handleSave}>Save</button>
